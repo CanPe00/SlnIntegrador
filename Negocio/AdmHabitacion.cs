@@ -1,4 +1,6 @@
-﻿using Entidades;
+﻿
+using Entidades;
+using Entidades.Dac;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,52 +13,48 @@ namespace Negocio
     {
         public static List<Habitacion> Listar()
         {
-            //TODO SELECT
-            List<Habitacion> listaHabitaciones = new List<Habitacion>();
-            listaHabitaciones.Add(new Habitacion()
-            {
-                Id = 1,
-                Numero = 52,
-                Estado = true,
-               
-            }); ;
-            listaHabitaciones.Add(new Habitacion()
-            {
-                Id = 2,
-                Numero = 2,
-                Estado = false,
-                
-            });
-            listaHabitaciones.Add(new Habitacion()
-            {
-                Id = 3,
-                Numero = 78,
-                Estado = true,
-            });
-            return listaHabitaciones;
+
+            //List<Habitacion> listaHabitaciones = new List<Habitacion>();
+            //listaHabitaciones.Add(new Habitacion()
+            //{
+            //    Id = 1,
+            //    Numero = 52,
+            //    Estado = true,
+
+            //}); ;
+            //listaHabitaciones.Add(new Habitacion()
+            //{
+            //    Id = 2,
+            //    Numero = 2,
+            //    Estado = false,
+
+            //});
+            //listaHabitaciones.Add(new Habitacion()
+            //{
+            //    Id = 3,
+            //    Numero = 78,
+            //    Estado = true,
+            //});
+            return DacHabitacion.Select();
         }
 
         public static List<Habitacion> Listar(bool Estado)
         {
-            //TODO SELECT WHERE ESTADO
-            return null;
+            return DacHabitacion.Select(Estado);
         }
 
         public static int Insertar(Habitacion habitacion)
         {
-            //TODO INSERT
-            return 0;
+            return DacHabitacion.Insert(habitacion);
         }
 
-        public static int Eliminar(int Id)
+        public static int Eliminar(Habitacion habitacion)
         {
-            //TODO DELETE WHERE ID
-            return 0;
+            return DacHabitacion.Delete(habitacion);
         }
-        public static Habitacion TraerUno(int Numero)
+        public static Habitacion TraerUno(int Id)
         {
-            //TODO SELECT WHERE numero
-            return null;
+            return DacHabitacion.SelectById(Id);
         }
     }
 }
